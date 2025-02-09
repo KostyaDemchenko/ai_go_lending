@@ -1,0 +1,81 @@
+@mixin flex($justify_content, $align_items: normal) {
+  justify-content: $justify_content;
+  align-items: $align_items;
+  display: flex;
+}
+
+@mixin width($width, $max-width: none) {
+  width: $width;
+  max-width: $max-width;
+}
+
+@mixin f-direction($direction) {
+  flex-direction: $direction;
+}
+
+@mixin screen-tb {
+  @media screen and (max-width: 1220px) {
+    @content;
+  }
+}
+
+@mixin screen-mb {
+  @media screen and (max-width: 550px) {
+    @content;
+  }
+}
+
+@mixin container {
+  --container-top-padding: 0;
+  --container-side-padding: 15px;
+  --container-width: 1380px;
+
+  width: 100%;
+  margin: 0 auto;
+  max-width: var(--container-width);
+  padding: var(--container-top-padding) var(--container-side-padding);
+
+  @include screen-mb {
+    padding-left: 15px;
+    padding-right: 15px;
+    max-width: calc(100% - 30px);
+    width: 100%;
+    padding-top: 35px;
+    padding-bottom: 35px;
+  }
+}
+
+// FONTS
+$fontMain: "Unbounded", serif;
+
+@mixin font($sizePx, $lineHeightPercent, $fontWeight: 400) {
+  font-size: #{$sizePx}px;
+  line-height: #{$lineHeightPercent};
+  font-weight: #{$fontWeight};
+}
+
+// COLORS
+$gray0: #fcfcfc;
+$gray100: #e7e7e7;
+$gray150: #cfcfcf;
+$gray200: #b7b7b7;
+$gray300: #9f9f9f;
+$gray400: #878787;
+$gray500: #797979;
+$gray600: #6c6c6c;
+$gray700: #515151;
+$gray800: #363636;
+$gray900: #1b1b1b;
+
+$blue100: #cce3ff;
+$blue200: #99c8ff;
+$blue300: #66acff;
+$blue400: #3391ff;
+$blue500: #0075ff;
+$blue600: #005ecc;
+$blue700: #004699;
+$blue800: #002f66;
+$blue800: #001733;
+
+$transparent: transparent;
+$bgDark: #080808;

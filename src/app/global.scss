@@ -1,0 +1,83 @@
+@import "./shortStyles.scss";
+
+// SCROLLBAR
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: $transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  //   background: $red500;
+  border-radius: 50px;
+}
+
+// RESET
+html {
+  scroll-behavior: smooth;
+  background: $bgDark;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// GLOBAL
+body {
+  font-family: $fontMain;
+  width: 100%;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  body {
+    font-smoothing: antialiased;
+  }
+}
+
+main {
+  height: fit-content;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  font-family: $fontMain;
+
+  outline: none;
+  border: none;
+  cursor: pointer;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+span {
+  -webkit-tap-highlight-color: transparent;
+  //   color: var(--color-secondary-white);
+  font-family: $fontMain;
+}
+
+img,
+div,
+p,
+span {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.no-scroll {
+  overflow: hidden;
+}

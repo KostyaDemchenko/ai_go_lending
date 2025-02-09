@@ -25,6 +25,12 @@ const HeadComponent: React.FC<HeadProps> = ({
         rel='stylesheet'
       />
 
+      <link rel='preconnect' href='https://fonts.googleapis.com' />
+      <link
+        href='https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap'
+        rel='stylesheet'
+      />
+
       {/* Open Graph метатеги (Facebook, LinkedIn и др.) */}
       <meta property='og:title' content={pageTitle} />
       <meta property='og:description' content={pageDescription} />
