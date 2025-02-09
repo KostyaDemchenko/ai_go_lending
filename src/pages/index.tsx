@@ -2,7 +2,7 @@ import HeadComponent from "@/src/components/Head";
 // import Header from "@/src/components/Header";
 // import Footer from "@/src/components/Footer";
 
-// import styles from "@/src/app/global.scss";
+import "@/src/app/global.scss";
 
 export default function Home() {
   return (
