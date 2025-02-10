@@ -25,7 +25,7 @@
   }
 }
 
-@mixin container {
+.container {
   --container-top-padding: 0;
   --container-side-padding: 15px;
   --container-width: 1380px;
@@ -34,6 +34,8 @@
   margin: 0 auto;
   max-width: var(--container-width);
   padding: var(--container-top-padding) var(--container-side-padding);
+
+  @include flex(flex-start, flex-start);
 
   @include screen-mb {
     padding-left: 15px;
@@ -47,9 +49,10 @@
 
 // FONTS
 $fontMain: "Unbounded", serif;
+$fontSecondary: "Montserrat", sans-serif;
 
 @mixin font($sizePx, $lineHeightPercent, $fontWeight: 400) {
-  font-size: #{$sizePx}px;
+  font-size: #{$sizePx};
   line-height: #{$lineHeightPercent};
   font-weight: #{$fontWeight};
 }

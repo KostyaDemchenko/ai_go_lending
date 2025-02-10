@@ -1,0 +1,55 @@
+@import "@/src/app/shortStyles.scss";
+
+.header {
+  width: 100%;
+  padding: 24px 0;
+  position: fixed;
+  z-index: 10;
+  background-color: $transparent;
+  transition: background-color 0.3s;
+
+  &.scrolled {
+    background-color: $bgDark;
+  }
+
+  @include screen-mb {
+    padding: 10px 0;
+  }
+
+  .container {
+    @include flex(space-between, center);
+    @include screen-mb {
+      padding: 0;
+    }
+
+    .left-side,
+    .right-side {
+      @include flex(flex-start, center);
+      width: fit-content;
+      gap: 50px;
+    }
+
+    .menu {
+      @include flex(flex-start, center);
+      gap: 35px;
+
+      @include screen-mb {
+        display: none;
+      }
+      .link {
+        font-family: $fontSecondary;
+        @include font(16px, 120%, 400);
+        transition: 0.3s;
+
+        &:hover {
+          color: $blue200;
+          transition: 0.3s;
+        }
+      }
+      .active {
+        color: $blue500;
+        transition: 0.3s;
+      }
+    }
+  }
+}

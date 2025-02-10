@@ -1,0 +1,34 @@
+@import "@/src/app/shortStyles.scss";
+
+.btn {
+  @include flex(center, center);
+  gap: 12px;
+
+  padding: 16px 20px;
+  background-color: $blue500;
+  color: $gray0;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  max-width: 200px;
+  width: 100%;
+  height: 45px;
+  transition: 0.3s;
+
+  font-family: $fontSecondary;
+  @include font(14px, 120%, 500);
+
+  &:hover {
+    background-color: $blue600;
+    transition: 0.3s;
+  }
+
+  @include screen-mb {
+    max-width: 100%;
+  }
+
+  .icon {
+    width: 24px;
+    height: 24px;
+  }
+}

@@ -10,7 +10,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  //   background: $red500;
+  background: $blue500;
   border-radius: 50px;
 }
 
@@ -67,7 +67,7 @@ p,
 a,
 span {
   -webkit-tap-highlight-color: transparent;
-  //   color: var(--color-secondary-white);
+  color: $gray0;
   font-family: $fontMain;
 }
 

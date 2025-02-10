@@ -1,3 +1,4 @@
+// components/HeadComponent.tsx
 import Head from "next/head";
 
 interface HeadProps {
@@ -19,19 +20,8 @@ const HeadComponent: React.FC<HeadProps> = ({
       <title>{pageTitle}</title>
       <meta name='description' content={pageDescription} />
       <link rel='canonical' href={pageUrl} />
-      <link rel='preconnect' href='https://fonts.googleapis.com' />
-      <link
-        href='https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap'
-        rel='stylesheet'
-      />
 
-      <link rel='preconnect' href='https://fonts.googleapis.com' />
-      <link
-        href='https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap'
-        rel='stylesheet'
-      />
-
-      {/* Open Graph метатеги (Facebook, LinkedIn и др.) */}
+      {/* Open Graph метатеги */}
       <meta property='og:title' content={pageTitle} />
       <meta property='og:description' content={pageDescription} />
       <meta property='og:image' content={pageImage} />
@@ -46,25 +36,6 @@ const HeadComponent: React.FC<HeadProps> = ({
 
       {/* Favicon */}
       <link rel='icon' href='/favicon.ico' />
-
-      {/* Google Analytics 4: добавляем скрипты */}
-      <script
-        async
-        src='https://www.googletagmanager.com/gtag/js?id=G-72KSPZ17NV'
-      />
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-72KSPZ17NV', {
-              page_path: window.location.pathname,
-            });
-          `,
-        }}
-      />
     </Head>
   );
 };
