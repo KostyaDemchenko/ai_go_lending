@@ -32,3 +32,18 @@
     height: 24px;
   }
 }
+
+.secondary {
+  background-color: $gray0;
+  color: $bgDark;
+  max-width: 315px;
+
+  @include screen-mb {
+    max-width: 100%;
+  }
+
+  &:hover {
+    background-color: $gray100;
+    transition: 0.3s;
+  }
+}
