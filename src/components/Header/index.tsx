@@ -11,10 +11,10 @@ interface HeaderProps {}
 
 const Header: React.FC<HeaderProps> = () => {
   const [windowWidth, setWindowWidth] = useState(0);
-  const [activeSection, setActiveSection] = useState<string>("about_us");
+  const [activeSection, setActiveSection] = useState<string>("about-us");
   const [scrolled, setScrolled] = useState<boolean>(false);
 
-  // Відслідковуємо зміну ширини вікна
+  // Отслеживаем изменение ширины окна
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
@@ -24,24 +24,21 @@ const Header: React.FC<HeaderProps> = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Відслідковуємо скрол, щоб змінити фон хедера
+  // Отслеживаем скролл для изменения фона хедера
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Определяем массив объектов с id и label для меню
   const menuItems = [
-    "Про проєкт",
-    "Як це працює",
-    "Переваги",
-    "Найчастіші запитання",
+    { id: "about-us", label: "Про проєкт" },
+    { id: "how-it-works", label: "Як це працює" },
+    { id: "advantages", label: "Переваги" },
+    { id: "faq", label: "Найчастіші запитання" },
   ];
 
   const handleMenuClick = (id: string) => {
@@ -64,14 +61,14 @@ const Header: React.FC<HeaderProps> = () => {
 
           {windowWidth > 1000 && (
             <nav className='menu'>
-              {menuItems.map((id) => (
+              {menuItems.map(({ id, label }) => (
                 <a
                   key={id}
                   href={`/#${id}`}
                   className={activeSection === id ? "active link" : "link"}
                   onClick={() => handleMenuClick(id)}
                 >
-                  {id}
+                  {label}
                 </a>
               ))}
             </nav>

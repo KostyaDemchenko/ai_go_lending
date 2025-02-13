@@ -5,6 +5,10 @@
   width: 100%;
   flex-direction: column;
   gap: 100px;
+
+  @include screen-mb {
+    gap: 50px;
+  }
 }
 
 .hero-section {
@@ -60,6 +64,49 @@
       height: 100%;
       object-fit: contain;
       filter: drop-shadow(-54px 85px 100px rgba(0, 117, 255, 0.2));
+    }
+  }
+}
+
+.about-us {
+  @include flex(center, center);
+  @include f-direction(column);
+  width: 100%;
+  gap: 55px;
+  overflow: visible;
+
+  @include screen-mb {
+    gap: 30px;
+  }
+
+  .info {
+    @include flex(flex-start, flex-start);
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+
+    .title {
+      font-family: $fontSecondary;
+      @include font(18px, 120%, 500);
+    }
+
+    .description {
+      font-family: $fontSecondary;
+      color: $gray0;
+      @include font(32px, 120%, 600);
+
+      @include screen-mb {
+        @include font(24px, 120%, 600);
+      }
+    }
+  }
+
+  .floating-box {
+    @include flex(center, center);
+    width: 100%;
+    position: relative;
+
+    .img-box {
     }
   }
 }

@@ -81,3 +81,23 @@ span {
 .no-scroll {
   overflow: hidden;
 }
+
+.desktop-only {
+  display: block;
+
+  @include screen-mb {
+    display: none;
+  }
+}
+
+.mobile-only {
+  display: none;
+
+  @include screen-mb {
+    display: block;
+  }
+}
+
+.blue-500 {
+  color: $blue500;
+}

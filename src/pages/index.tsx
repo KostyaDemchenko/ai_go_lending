@@ -2,8 +2,7 @@ import Image from "next/image";
 import HeadComponent from "@/src/components/Head";
 import Header from "@/src/components/Header";
 import Button from "@/src/components/Button";
-
-// import Footer from "@/src/components/Footer";
+import FloatingBox from "@/src/components/FloatingBox"; // Импортируем новый компонент
 
 import img from "@/public/img/utils";
 import icons from "@/public/icons/utils";
@@ -37,8 +36,20 @@ export default function Home() {
               </Button>
             </div>
             <div className='img-box'>
-              <Image src={img.hero01} alt='hero' />
+              <Image src={img.hero01} alt='hero' priority />
             </div>
+          </section>
+          <section className='container about-us' id='about-us'>
+            <div className='info'>
+              <h2 className='title blue-500'>Про проєкт</h2>
+              <h3 className='description'>
+                Наша мета — відкриття нових можливостей ефективного промптінгу.
+                Знаходьте необхідні сервіси, ідеї для промптів та опановуйте
+                навичкам складання запитів разом із
+                <span className='blue-500'> AI.GO</span>
+              </h3>
+            </div>
+            <FloatingBox />
           </section>
         </main>
       </section>
