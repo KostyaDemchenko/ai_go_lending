@@ -124,6 +124,40 @@
   }
 }
 
+.hit-section {
+  @include flex(center, center);
+  width: 100%;
+
+  .container {
+    @include flex(center, center);
+    @include f-direction(column);
+    gap: 20px;
+    width: 100%;
+    max-width: 1150px;
+  }
+
+  .card-container {
+    @include flex(center, flex-start);
+    @include f-direction(row);
+    flex-wrap: wrap;
+    width: 100%;
+
+    gap: 75px;
+
+    @include screen-mb {
+      gap: 35px;
+    }
+
+    > *:nth-child(even) {
+      @include f-direction(row-reverse);
+
+      @include screen-mb {
+        @include f-direction(column-reverse);
+      }
+    }
+  }
+}
+
 .cta-section {
   @include flex(center, center);
   width: 100%;

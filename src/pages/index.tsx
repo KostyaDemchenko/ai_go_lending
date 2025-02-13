@@ -2,13 +2,40 @@ import Image from "next/image";
 import HeadComponent from "@/src/components/Head";
 import Header from "@/src/components/Header";
 import Button from "@/src/components/Button";
-import FloatingBox from "@/src/components/FloatingBox"; // Импортируем новый компонент
+import FloatingBox from "@/src/components/FloatingBox";
+import Card from "@/src/components/Card";
+import ScrollToTopButton from "@/src/components/ScrollToTopButton";
 
 import img from "@/public/img/utils";
 import icons from "@/public/icons/utils";
 
 import "@/src/app/global.scss";
 import "@/src/app/page.scss";
+
+// Данные для карточек
+const cardData = [
+  {
+    number: 1,
+    title: "Знаходьте нейромережі для власних задач",
+    description:
+      "Lorem ipsum dolor sin amet magna consecteur aliqua nici consecteur magna consequat laborem sin dolorem consequat laborem sin dolorem.",
+    imageSrc: img.hit01,
+  },
+  {
+    number: 2,
+    title: "Шукайте промпти для натхнення",
+    description:
+      "Lorem ipsum dolor sin amet magna consecteur aliqua nici consecteur magna consequat laborem sin dolorem consequat laborem sin dolorem. ",
+    imageSrc: img.hit02,
+  },
+  {
+    number: 3,
+    title: "Навчайтесь навичкам зі складання промптів",
+    description:
+      "Lorem ipsum dolor sin amet magna consecteur aliqua nici consecteur magna consequat laborem sin dolorem consequat laborem sin dolorem. ",
+    imageSrc: img.hit03,
+  },
+];
 
 export default function Home() {
   return (
@@ -39,6 +66,7 @@ export default function Home() {
               <Image src={img.hero01} alt='hero' priority />
             </div>
           </section>
+
           <section className='container about-us' id='about-us'>
             <div className='info'>
               <h2 className='title blue-500'>Про проєкт</h2>
@@ -51,16 +79,36 @@ export default function Home() {
             </div>
             <FloatingBox />
           </section>
+
+          <section className='hit-section'>
+            <div className='container'>
+              <div className='info'>
+                <h2 className='title'>Як це працює</h2>
+              </div>
+              <div className='card-container'>
+                {cardData.map((card) => (
+                  <Card
+                    key={card.number}
+                    number={card.number}
+                    title={card.title}
+                    description={card.description}
+                    imageSrc={card.imageSrc}
+                  />
+                ))}
+              </div>
+            </div>
+          </section>
+
           <section className='cta-section'>
             <div className='container'>
               <div className='info'>
                 <h2 className='title'>
-                  Знаходьте нові нейромережі та промпти в один клік!{" "}
+                  Знаходьте нові нейромережі та промпти в один клік!
                 </h2>
                 <h3 className='description'>
                   Lorem ipsum dolor sin amet magna consecteur aliqua nici
                   consecteur magna consequat laborem sin dolorem consequat
-                  laborem sin dolorem.{" "}
+                  laborem sin dolorem.
                 </h3>
               </div>
               <Button className='secondary'>
@@ -76,6 +124,7 @@ export default function Home() {
           </section>
         </main>
       </section>
+      <ScrollToTopButton />
     </div>
   );
 }
