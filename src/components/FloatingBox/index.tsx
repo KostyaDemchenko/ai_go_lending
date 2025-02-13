@@ -2,8 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import img from "@/public/img/utils";
 
-import "./style.scss";
-
 const FloatingBox: React.FC = () => {
   // Состояния для смещений каждого изображения
   const [offset1, setOffset1] = useState(0);
@@ -13,16 +11,15 @@ const FloatingBox: React.FC = () => {
   const velocity1 = useRef(0);
   const velocity2 = useRef(0);
 
-  // Задаём границы смещения для более ограниченного движения
+  // Границы смещения для движения
   const minOffset = 0; // верхняя граница
   const maxOffset = 30; // нижняя граница
 
-  // Инициализируем реф без обращения к window в модульной области
+  // Реф для хранения предыдущего scrollY
   const lastScrollY = useRef(0);
 
   // Обработчик скролла: вычисляем дельту скролла и добавляем импульс к скорости
   useEffect(() => {
-    // Устанавливаем начальное значение scrollY только на клиенте
     if (typeof window !== "undefined") {
       lastScrollY.current = window.scrollY;
     }
@@ -33,9 +30,9 @@ const FloatingBox: React.FC = () => {
         const delta = currentScrollY - lastScrollY.current;
         lastScrollY.current = currentScrollY;
 
-        // Уменьшаем коэффициент импульса, чтобы реакция на скролл была слабее
-        velocity1.current += delta * 0.03;
-        velocity2.current -= delta * 0.03;
+        // Снижаем коэффициент импульса, чтобы движение было менее резким
+        velocity1.current += delta * 0.01;
+        velocity2.current -= delta * 0.01;
       }
     };
 
@@ -46,7 +43,7 @@ const FloatingBox: React.FC = () => {
   // Анимационный цикл для обновления позиций изображений
   useEffect(() => {
     let animationFrameId: number;
-    const damping = 0.95; // более плавное затухание скорости
+    const damping = 0.95; // плавное затухание скорости
 
     const animate = () => {
       // Обновляем позицию первого изображения
@@ -54,7 +51,7 @@ const FloatingBox: React.FC = () => {
         let newOffset = prev + velocity1.current;
         if (newOffset < minOffset) {
           newOffset = minOffset;
-          velocity1.current = -velocity1.current * 0.3; // отскок с уменьшением скорости
+          velocity1.current = -velocity1.current * 0.3; // отскок
         } else if (newOffset > maxOffset) {
           newOffset = maxOffset;
           velocity1.current = -velocity1.current * 0.3;
@@ -89,31 +86,36 @@ const FloatingBox: React.FC = () => {
   return (
     <div
       className='floating-box'
-      style={{ position: "relative", overflow: "hidden" }}
+      // Заменяем overflow: hidden на visible, чтобы элементы не обрезались
+      style={{ position: "relative", overflow: "visible" }}
     >
       <div
         className='img-box'
         style={{
-          width: "100%",
-          maxWidth: "350px",
           transform: `translateY(${offset1}px)`,
           willChange: "transform",
           transition: "transform 0.05s ease-out",
         }}
       >
-        <Image src={img.about01} alt='About us' />
+        <Image
+          src={img.about01}
+          alt='About us'
+          style={{ height: "100%", width: "100%" }}
+        />
       </div>
       <div
         className='desktop-only img-box'
         style={{
-          width: "100%",
-          maxWidth: "350px",
           transform: `translateY(${offset2}px)`,
           willChange: "transform",
           transition: "transform 0.05s ease-out",
         }}
       >
-        <Image src={img.about02} alt='About us' />
+        <Image
+          src={img.about02}
+          alt='About us'
+          style={{ height: "100%", width: "100%" }}
+        />
       </div>
     </div>
   );
