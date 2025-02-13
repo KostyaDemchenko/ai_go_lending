@@ -136,6 +136,16 @@
     max-width: 1150px;
   }
 
+  .title {
+    @include font(42px, 125%, 400);
+    text-align: center;
+    color: $gray0;
+
+    @include screen-mb {
+      @include font(28px, 125%, 400);
+    }
+  }
+
   .card-container {
     @include flex(center, flex-start);
     @include f-direction(row);
@@ -153,6 +163,52 @@
 
       @include screen-mb {
         @include f-direction(column-reverse);
+      }
+    }
+  }
+}
+
+.advantages-section {
+  @include flex(center, center);
+  @include f-direction(column);
+  width: 100%;
+
+  .container {
+    @include flex(center, center);
+    @include f-direction(column);
+    gap: 20px;
+    width: 100%;
+    gap: 65px;
+
+    @include screen-mb {
+      gap: 35px;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .title {
+      @include font(42px, 125%, 400);
+      text-align: center;
+      color: $gray0;
+    }
+
+    .cards-container {
+      @include flex(flex-start, flex-start);
+      @include f-direction(row);
+      flex-wrap: wrap;
+      width: 100%;
+      gap: 20px;
+
+      @include screen-mb {
+        @include f-direction(column);
+      }
+
+      > * {
+        width: calc(33.33% - 20px);
+
+        @include screen-mb {
+          width: 100%;
+        }
       }
     }
   }

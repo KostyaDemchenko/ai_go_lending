@@ -14,6 +14,14 @@ const Header: React.FC<HeaderProps> = () => {
   const [activeSection, setActiveSection] = useState<string>("about-us");
   const [scrolled, setScrolled] = useState<boolean>(false);
 
+  // Массив объектов для навигационного меню
+  const menuItems = [
+    { id: "about-us", label: "Про проєкт" },
+    { id: "how-it-works", label: "Як це працює" },
+    { id: "advantages", label: "Переваги" },
+    { id: "faq", label: "Найчастіші запитання" },
+  ];
+
   // Отслеживаем изменение ширины окна
   useEffect(() => {
     const handleResize = () => {
@@ -33,16 +41,38 @@ const Header: React.FC<HeaderProps> = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Определяем массив объектов с id и label для меню
-  const menuItems = [
-    { id: "about-us", label: "Про проєкт" },
-    { id: "how-it-works", label: "Як це працює" },
-    { id: "advantages", label: "Переваги" },
-    { id: "faq", label: "Найчастіші запитання" },
-  ];
+  // Обработчик для определения активного раздела на странице
+  useEffect(() => {
+    const handleActiveSection = () => {
+      // Проходим по каждому элементу меню
+      for (let i = 0; i < menuItems.length; i++) {
+        const section = document.getElementById(menuItems[i].id);
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          // Если верхняя граница раздела ниже фиксированной точки (например, 150px)
+          // и нижняя граница выше этой точки, то раздел считается активным
+          if (rect.top <= 150 && rect.bottom >= 150) {
+            setActiveSection(menuItems[i].id);
+            break;
+          }
+        }
+      }
+    };
 
+    window.addEventListener("scroll", handleActiveSection);
+    // Запускаем при первой загрузке
+    handleActiveSection();
+    return () => window.removeEventListener("scroll", handleActiveSection);
+  }, []);
+
+  // Обработчик клика по ссылке — скроллит до нужного раздела
   const handleMenuClick = (id: string) => {
     setActiveSection(id);
+    const section = document.getElementById(id);
+    if (section) {
+      // Плавный скролл к разделу
+      section.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
@@ -58,7 +88,6 @@ const Header: React.FC<HeaderProps> = () => {
               priority={true}
             />
           </a>
-
           {windowWidth > 1000 && (
             <nav className='menu'>
               {menuItems.map(({ id, label }) => (

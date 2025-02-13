@@ -3,7 +3,8 @@ import HeadComponent from "@/src/components/Head";
 import Header from "@/src/components/Header";
 import Button from "@/src/components/Button";
 import FloatingBox from "@/src/components/FloatingBox";
-import Card from "@/src/components/Card";
+import CardHIT from "@/src/components/CardHIT";
+import CardAdvantages from "@/src/components/CardAdvantages";
 import ScrollToTopButton from "@/src/components/ScrollToTopButton";
 
 import img from "@/public/img/utils";
@@ -13,7 +14,7 @@ import "@/src/app/global.scss";
 import "@/src/app/page.scss";
 
 // Данные для карточек
-const cardData = [
+const cardHITData = [
   {
     number: 1,
     title: "Знаходьте нейромережі для власних задач",
@@ -34,6 +35,30 @@ const cardData = [
     description:
       "Lorem ipsum dolor sin amet magna consecteur aliqua nici consecteur magna consequat laborem sin dolorem consequat laborem sin dolorem. ",
     imageSrc: img.hit03,
+  },
+];
+
+const cardAdvantagesData = [
+  {
+    number: 1,
+    title: "Актуальність",
+    description:
+      "Ми постійно оновлюємо бібліотеку, додаючи нові AI-інструменти та найкращі промпти для різних задач.",
+    imageSrc: img.adv01,
+  },
+  {
+    number: 2,
+    title: "Зручність Пошуку",
+    description:
+      "Знаходьте нейромережі, промпти та гайди за секунди завдяки зручній категоризації та розумному фільтру.",
+    imageSrc: img.adv02,
+  },
+  {
+    number: 3,
+    title: "Інтерактивне Навчання",
+    description:
+      "Опануйте мистецтво промптінгу: від базових принципів до тонкої оптимізації для конкретних AI-моделей.",
+    imageSrc: img.adv03,
   },
 ];
 
@@ -82,14 +107,30 @@ export default function Home() {
 
           <section className='hit-section' id='how-it-works'>
             <div className='container'>
-              <div className='info'>
-                <h2 className='title'>Як це працює</h2>
-              </div>
+              <h2 className='title'>Як це працює</h2>
               <div className='card-container'>
-                {cardData.map((card) => (
-                  <Card
+                {cardHITData.map((card) => (
+                  <CardHIT
                     key={card.number}
                     number={card.number}
+                    title={card.title}
+                    description={card.description}
+                    imageSrc={card.imageSrc}
+                  />
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section className='advantages-section' id='advantages'>
+            <div className='container'>
+              <h2 className='title'>
+                Переваги платформи <span className='blue-500'>AI.GO</span>
+              </h2>
+              <div className='cards-container'>
+                {cardAdvantagesData.map((card) => (
+                  <CardAdvantages
+                    key={card.number}
                     title={card.title}
                     description={card.description}
                     imageSrc={card.imageSrc}

@@ -10,14 +10,14 @@ interface CardProps {
   imageSrc: StaticImageData;
 }
 
-const Card: React.FC<CardProps> = ({
+const CardHIT: React.FC<CardProps> = ({
   number,
   title,
   description,
   imageSrc,
 }) => {
   return (
-    <div className='card'>
+    <div className='hit-card'>
       <div className='card-info'>
         <p className='card-number blue-500'>{number}.</p>
         <div className='card-text'>
@@ -32,4 +32,4 @@ const Card: React.FC<CardProps> = ({
   );
 };
 
-export default Card;
+export default CardHIT;

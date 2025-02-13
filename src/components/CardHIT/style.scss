@@ -1,6 +1,6 @@
 @import "@/src/app/shortStyles.scss";
 
-.card {
+.hit-card {
   @include flex(space-between, center);
   @include f-direction(row);
   width: 100%;
