@@ -110,3 +110,68 @@
     }
   }
 }
+
+.cta-section {
+  @include flex(center, center);
+  width: 100%;
+
+  background-image: url("/img/cta-section-bg-01.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  margin: 0;
+  padding: 0;
+  height: 470px;
+
+  @include screen-mb {
+    height: 450px;
+    background-image: url("/img/cta-section-bg-01-sm.webp");
+  }
+
+  .container {
+    @include flex(center, center);
+    @include f-direction(column);
+    gap: 45px;
+
+    @include screen-mb {
+      gap: 35px;
+    }
+  }
+
+  .info {
+    @include flex(center, center);
+    @include f-direction(column);
+    width: 100%;
+    max-width: 1000px;
+    gap: 15px;
+
+    @include screen-mb {
+      gap: 10px;
+    }
+
+    .title {
+      @include font(42px, 125%, 400);
+      text-align: center;
+      color: $gray0;
+
+      @include screen-mb {
+        @include font(28px, 125%, 400);
+        text-align: left;
+      }
+    }
+
+    .description {
+      @include font(16px, 150%, 400);
+      font-family: $fontSecondary;
+      text-align: center;
+      color: $gray0;
+
+      max-width: 750px;
+
+      @include screen-mb {
+        text-align: left;
+      }
+    }
+  }
+}

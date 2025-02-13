@@ -51,6 +51,29 @@ export default function Home() {
             </div>
             <FloatingBox />
           </section>
+          <section className='cta-section'>
+            <div className='container'>
+              <div className='info'>
+                <h2 className='title'>
+                  Знаходьте нові нейромережі та промпти в один клік!{" "}
+                </h2>
+                <h3 className='description'>
+                  Lorem ipsum dolor sin amet magna consecteur aliqua nici
+                  consecteur magna consequat laborem sin dolorem consequat
+                  laborem sin dolorem.{" "}
+                </h3>
+              </div>
+              <Button className='secondary'>
+                Підписатись на оновлення
+                <Image
+                  src={icons.openDark}
+                  alt='arrow'
+                  width={24}
+                  height={24}
+                />
+              </Button>
+            </div>
+          </section>
         </main>
       </section>
     </div>
