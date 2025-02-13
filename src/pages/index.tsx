@@ -80,7 +80,7 @@ export default function Home() {
             <FloatingBox />
           </section>
 
-          <section className='hit-section'>
+          <section className='hit-section' id='how-it-works'>
             <div className='container'>
               <div className='info'>
                 <h2 className='title'>Як це працює</h2>
