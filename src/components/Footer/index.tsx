@@ -12,7 +12,6 @@ const Footer: React.FC<FooterProps> = () => {
   return (
     <footer className='footer'>
       <div className='container'>
-        {/* Левый блок: логотип и текст под ним */}
         <div className='footer-left'>
           <a href='/' className='logo-link'>
             <Image
@@ -26,11 +25,10 @@ const Footer: React.FC<FooterProps> = () => {
           <p className='footer-text'>© 2024. AIGO. Усі права збережені.</p>
         </div>
 
-        {/* Центр: ссылка для зв'язку с иконкой почты */}
         <div className='footer-center'>
-          <a href='mailto:aigo.lib@gmail.com' className='contact-link'>
+          <a href='mailto:ai.go.libraries@gmail.com' className='contact-link'>
             <Image src={icons.mail} alt='Email Icon' width={24} height={24} />
-            <span className='blue-500'>aigo.lib@gmail.com</span>
+            <span className='blue-500'>ai.go.libraries@gmail.com</span>
           </a>
         </div>
       </div>
