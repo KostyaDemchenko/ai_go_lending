@@ -11,24 +11,28 @@
     @include f-direction(column);
     width: 100%;
     gap: 25px;
-    border-bottom: 1px solid $gray100;
+    border-bottom: 1px solid $gray900;
 
     .accordion-header {
       @include flex(space-between, center);
       width: 100%;
+      gap: 45px;
       cursor: pointer;
 
       .accordion-question {
         @include font(32px, 120%, 600);
+        font-family: $fontSecondary;
         color: $gray0;
         text-align: left;
+        flex-shrink: 1;
 
         @include screen-mb {
-          @include font(22px, 120%, 600);
+          @include font(18px, 120%, 600);
         }
       }
 
       .accordion-icon {
+        @include flex(center, center);
         position: relative;
         width: 40px;
         height: 40px;
@@ -36,6 +40,7 @@
         border: 1px solid $gray900;
         border-radius: 3px;
         transition: all 0.3s ease;
+        flex-shrink: 0;
 
         span {
           position: absolute;
@@ -67,6 +72,8 @@
 
       p {
         @include font(20px, 125%, 400);
+        font-family: $fontSecondary;
+
         color: $gray150;
         text-align: left;
       }

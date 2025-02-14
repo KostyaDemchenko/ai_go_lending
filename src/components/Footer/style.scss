@@ -1,0 +1,69 @@
+@import "@/src/app/shortStyles.scss";
+
+.footer {
+  @include flex(center, center);
+  position: relative;
+  width: 100%;
+  padding: 45px 0;
+  border-top: 1px solid $gray900;
+
+  @include screen-mb {
+    padding: 35px 0 55px 0;
+  }
+
+  .container {
+    @include flex(flex-start, center);
+    @include f-direction(row);
+
+    @include screen-mb {
+      @include flex(flex-start, flex-start);
+      @include f-direction(column);
+
+      gap: 20px;
+    }
+  }
+
+  .footer-left {
+    @include flex(flex-start, flex-start);
+    flex-direction: column;
+    gap: 10px;
+
+    .logo-link {
+      // Дополнительные стили для логотипа при необходимости
+    }
+
+    .footer-text {
+      @include font(16px, 150%, 400);
+      font-family: $fontSecondary;
+      color: $gray150;
+      text-align: left;
+    }
+  }
+
+  .footer-center {
+    @include flex(center, center);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+    @include screen-mb {
+      position: static;
+      transform: none;
+    }
+
+    .contact-link {
+      @include flex(center, center);
+      @include font(16px, 120%, 400);
+      gap: 10px;
+      text-decoration: underline;
+      font-family: $fontSecondary;
+      color: $blue500;
+      transition: color 0.3s;
+
+      &:hover {
+        transition: color 0.3s;
+        color: $blue100;
+      }
+    }
+  }
+}
