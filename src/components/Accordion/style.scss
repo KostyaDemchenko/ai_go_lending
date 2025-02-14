@@ -1,0 +1,95 @@
+@import "@/src/app/shortStyles.scss";
+
+.accordion {
+  @include flex(flex-start, flex-start);
+  @include f-direction(column);
+  width: 100%;
+  gap: 25px;
+
+  .accordion-item {
+    @include flex(flex-start, flex-start);
+    @include f-direction(column);
+    width: 100%;
+    gap: 25px;
+    border-bottom: 1px solid $gray100;
+
+    .accordion-header {
+      @include flex(space-between, center);
+      width: 100%;
+      cursor: pointer;
+
+      .accordion-question {
+        @include font(32px, 120%, 600);
+        color: $gray0;
+        text-align: left;
+
+        @include screen-mb {
+          @include font(22px, 120%, 600);
+        }
+      }
+
+      .accordion-icon {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        background-color: $transparent;
+        border: 1px solid $gray900;
+        border-radius: 3px;
+        transition: all 0.3s ease;
+
+        span {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          width: 24px;
+          border-radius: 50px;
+          height: 2px;
+          background-color: $gray0;
+          transition: transform 0.3s ease;
+        }
+
+        span:first-child {
+          transform: translate(-50%, -50%) rotate(0deg);
+          opacity: 1;
+        }
+
+        span:last-child {
+          transform: translate(-50%, -50%) rotate(90deg);
+        }
+      }
+    }
+
+    .accordion-content {
+      overflow: hidden;
+      max-height: 0;
+      padding-bottom: 0;
+      transition: all 0.3s ease;
+
+      p {
+        @include font(20px, 125%, 400);
+        color: $gray150;
+        text-align: left;
+      }
+    }
+
+    &.active {
+      .accordion-content {
+        max-height: 250px;
+        padding-bottom: 25px;
+      }
+
+      .accordion-icon {
+        background-color: $blue500;
+        border: 1px solid $blue500;
+
+        span:first-child {
+          opacity: 0;
+        }
+
+        span:last-child {
+          transform: translate(-50%, -50%) rotate(180deg);
+        }
+      }
+    }
+  }
+}

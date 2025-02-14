@@ -278,3 +278,33 @@
     }
   }
 }
+
+.faq-section {
+  @include flex(center, center);
+  @include f-direction(column);
+  width: 100%;
+
+  .container {
+    @include flex(center, center);
+    @include f-direction(column);
+    gap: 20px;
+    width: 100%;
+    gap: 65px;
+
+    @include screen-mb {
+      gap: 35px;
+    }
+
+    .info {
+      .title {
+        @include font(42px, 125%, 400);
+        text-align: center;
+        color: $gray0;
+
+        @include screen-mb {
+          @include font(28px, 125%, 400);
+        }
+      }
+    }
+  }
+}

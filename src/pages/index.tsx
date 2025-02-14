@@ -6,6 +6,7 @@ import FloatingBox from "@/src/components/FloatingBox";
 import CardHIT from "@/src/components/CardHIT";
 import CardAdvantages from "@/src/components/CardAdvantages";
 import ScrollToTopButton from "@/src/components/ScrollToTopButton";
+import Accordion, { Item } from "@/src/components/Accordion";
 
 import img from "@/public/img/utils";
 import icons from "@/public/icons/utils";
@@ -13,7 +14,7 @@ import icons from "@/public/icons/utils";
 import "@/src/app/global.scss";
 import "@/src/app/page.scss";
 
-// Данные для карточек
+// Данные для карточек и FAQ
 const cardHITData = [
   {
     number: 1,
@@ -26,14 +27,14 @@ const cardHITData = [
     number: 2,
     title: "Шукайте промпти для натхнення",
     description:
-      "Lorem ipsum dolor sin amet magna consecteur aliqua nici consecteur magna consequat laborem sin dolorem consequat laborem sin dolorem. ",
+      "Lorem ipsum dolor sin amet magna consecteur aliqua nici consecteur magna consequat laborem sin dolorem consequat laborem sin dolorem.",
     imageSrc: img.hit02,
   },
   {
     number: 3,
     title: "Навчайтесь навичкам зі складання промптів",
     description:
-      "Lorem ipsum dolor sin amet magna consecteur aliqua nici consecteur magna consequat laborem sin dolorem consequat laborem sin dolorem. ",
+      "Lorem ipsum dolor sin amet magna consecteur aliqua nici consecteur magna consequat laborem sin dolorem consequat laborem sin dolorem.",
     imageSrc: img.hit03,
   },
 ];
@@ -59,6 +60,25 @@ const cardAdvantagesData = [
     description:
       "Опануйте мистецтво промптінгу: від базових принципів до тонкої оптимізації для конкретних AI-моделей.",
     imageSrc: img.adv03,
+  },
+];
+
+// Массив данных
+const Data: Item[] = [
+  {
+    question: "Що таке AI.GO?",
+    answer:
+      "AI.GO — це перша українська бібліотека нейромереж, що допомагає швидко знаходити оптимальні AI-рішення.",
+  },
+  {
+    question: "Як працює платформа?",
+    answer:
+      "Платформа дозволяє порівнювати різні нейромережі, знаходити актуальні промпти та отримувати рекомендації.",
+  },
+  {
+    question: "Чи є підтримка користувачів?",
+    answer:
+      "Так, наша команда завжди готова допомогти з будь-якими питаннями, пов'язаними з використанням платформи.",
   },
 ];
 
@@ -161,6 +181,15 @@ export default function Home() {
                   height={24}
                 />
               </Button>
+            </div>
+          </section>
+
+          <section className='faq-section' id='faq'>
+            <div className='container'>
+              <div className='info'>
+                <h2 className='title'>Найчастіші запитання</h2>
+              </div>
+              <Accordion items={Data} />
             </div>
           </section>
         </main>
