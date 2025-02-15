@@ -1,4 +1,6 @@
+import React, { useState } from "react";
 import Image from "next/image";
+
 import HeadComponent from "@/src/components/Head";
 import Header from "@/src/components/Header";
 import Button from "@/src/components/Button";
@@ -7,6 +9,7 @@ import CardHIT from "@/src/components/CardHIT";
 import CardAdvantages from "@/src/components/CardAdvantages";
 import ScrollToTopButton from "@/src/components/ScrollToTopButton";
 import Accordion, { Item } from "@/src/components/Accordion";
+import FeedbackModal from "@/src/components/FeedbackForm";
 import Footer from "@/src/components/Footer";
 
 import img from "@/public/img/utils";
@@ -93,6 +96,8 @@ const Data: Item[] = [
 ];
 
 export default function Home() {
+  const [modalVisible, setModalVisible] = useState(false);
+
   return (
     <div className='hero'>
       <HeadComponent
@@ -112,7 +117,7 @@ export default function Home() {
                 consecteur magna consequat laborem sin dolorem consequat laborem
                 sin dolorem.
               </h3>
-              <Button>
+              <Button onClick={() => setModalVisible(true)}>
                 Почати зараз
                 <Image src={icons.open} alt='arrow' width={24} height={24} />
               </Button>
@@ -182,7 +187,10 @@ export default function Home() {
                   laborem sin dolorem.
                 </h3>
               </div>
-              <Button className='secondary'>
+              <Button
+                className='secondary'
+                onClick={() => setModalVisible(true)}
+              >
                 Підписатись на оновлення
                 <Image
                   src={icons.openDark}
@@ -205,6 +213,10 @@ export default function Home() {
         </main>
       </section>
       <Footer />
+      <FeedbackModal
+        visible={modalVisible}
+        onClose={() => setModalVisible(false)}
+      />
       <ScrollToTopButton />
     </div>
   );

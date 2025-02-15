@@ -1,0 +1,161 @@
+@import "@/src/app/shortStyles.scss";
+
+.feedback-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Фон с полупрозрачностью и эффектом blur */
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.feedback-modal-container {
+  @include flex(center, center);
+  @include f-direction(column);
+  gap: 25px;
+  background-color: $bgDark;
+  padding: 35px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 20px;
+  color: $gray0;
+  position: relative;
+  text-align: center;
+  transform: scale(0.8);
+  opacity: 0;
+  animation: zoomIn 0.3s forwards;
+}
+
+.feedback-modal-container.closing {
+  animation: zoomOut 0.3s forwards;
+}
+
+@keyframes zoomIn {
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes zoomOut {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+}
+
+.modal-close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+
+  .close-line {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 17px;
+    height: 2px;
+    background-color: $gray0;
+    border-radius: 1px;
+    transform-origin: center;
+  }
+
+  .close-line:first-child {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  .close-line:last-child {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+}
+
+.modal-info {
+  @include flex(center, center);
+  @include f-direction(column);
+  gap: 12px;
+}
+
+.modal-title {
+  @include font(24px, 120%, 600);
+  font-family: $fontSecondary;
+  color: $gray0;
+}
+
+.modal-description {
+  @include font(16px, 150%, 400);
+  font-family: $fontSecondary;
+  color: $gray150;
+}
+
+.modal-form {
+  @include flex(flex-start, center);
+  @include f-direction(column);
+  gap: 20px;
+  width: 100%;
+}
+
+.form-group {
+  @include flex(flex-start, flex-start);
+  @include f-direction(column);
+  gap: 5px;
+  width: 100%;
+
+  input {
+    width: 100%;
+    padding: 16px 15px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid $gray900;
+    background: $bgDark;
+    transition: 0.3s;
+    @include font(16px, 120%, 400);
+    font-family: $fontSecondary;
+    color: $gray0;
+
+    &::placeholder {
+      @include font(16px, 120%, 400);
+      font-family: $fontSecondary;
+      color: $gray150;
+    }
+
+    &:hover {
+      border: 1px solid $blue300;
+      transition: 0.3s;
+    }
+
+    &:focus {
+      border: 1px solid $blue500;
+      transition: 0.3s;
+    }
+
+    &.error {
+      border: 1px solid #ff6b6b;
+      transition: 0.3s;
+    }
+  }
+
+  .error {
+    @include font(14px, 150%, 400);
+    text-align: left;
+    font-family: $fontSecondary;
+    color: #ff6b6b;
+  }
+}
