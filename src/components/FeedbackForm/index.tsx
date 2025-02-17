@@ -5,7 +5,6 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import Button from "@/src/components/Button";
-
 import "./style.scss";
 
 // Схема валидации с помощью Zod
@@ -33,9 +32,21 @@ const FeedbackModal: React.FC<FeedbackModalProps> = ({ visible, onClose }) => {
     resolver: zodResolver(feedbackSchema),
   });
 
-  const onSubmit = (data: FeedbackFormData) => {
-    console.log("Submitted data: ", data);
-    // Здесь можно реализовать отправку данных на сервер
+  const onSubmit = async (data: FeedbackFormData) => {
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) {
+        console.error("Subscription failed", await res.json());
+      } else {
+        console.log("Subscription successful");
+      }
+    } catch (error) {
+      console.error("Error subscribing:", error);
+    }
     reset();
     triggerClose();
   };
@@ -63,7 +74,6 @@ const FeedbackModal: React.FC<FeedbackModalProps> = ({ visible, onClose }) => {
 
   if (!visible) return null;
 
-  // Получаем элемент для портала (убедитесь, что он есть в DOM)
   const modalRoot = document.getElementById("modal-root");
   if (!modalRoot) return null;
 
