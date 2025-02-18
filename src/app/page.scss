@@ -4,7 +4,7 @@
   @include flex(center, center);
   width: 100%;
   flex-direction: column;
-  gap: 100px;
+  gap: 120px;
 
   @include screen-mb {
     gap: 50px;
@@ -97,6 +97,10 @@
 
       @include screen-mb {
         @include font(24px, 120%, 600);
+      }
+
+      span {
+        font-family: $fontSecondary;
       }
     }
   }
@@ -298,6 +302,7 @@
     @include f-direction(column);
     gap: 20px;
     width: 100%;
+    max-width: 1150px;
     gap: 65px;
 
     @include screen-mb {
