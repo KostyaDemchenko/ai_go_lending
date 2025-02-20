@@ -71,7 +71,7 @@
       transition: all 0.3s ease;
 
       p {
-        @include font(20px, 125%, 400);
+        @include font(16px, 125%, 400);
         font-family: $fontSecondary;
 
         color: $gray150;

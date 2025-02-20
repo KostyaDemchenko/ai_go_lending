@@ -16,7 +16,7 @@
   transition: 0.3s;
 
   font-family: $fontSecondary;
-  @include font(14px, 120%, 500);
+  @include font(16px, 120%, 600);
 
   &:hover {
     background-color: $blue600;
@@ -37,6 +37,10 @@
   background-color: $gray0;
   color: $bgDark;
   max-width: 315px;
+  height: 55px;
+
+  @include font(16px, 120%, 600);
+  font-family: $fontSecondary;
 
   @include screen-mb {
     max-width: 100%;
