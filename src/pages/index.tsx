@@ -11,6 +11,7 @@ import ScrollToTopButton from "@/src/components/ScrollToTopButton";
 import Accordion, { Item } from "@/src/components/Accordion";
 import FeedbackModal from "@/src/components/FeedbackForm";
 import Footer from "@/src/components/Footer";
+import AnimatedBlock from "@/src/components/AnimatedBlock";
 
 import img from "@/public/img/utils";
 import icons from "@/public/icons/utils";
@@ -18,31 +19,32 @@ import icons from "@/public/icons/utils";
 import "@/src/app/global.scss";
 import "@/src/app/page.scss";
 
-// Данные для карточек и FAQ
+// Дані для карточок "Як це працює"
 const cardHITData = [
   {
     number: 1,
     title: "Знаходьте нейромережі для власних задач",
     description:
-      "Lorem ipsum dolor sin amet magna consecteur aliqua nici consecteur magna consequat laborem sin dolorem consequat laborem sin dolorem.",
+      "Отримуйте миттєвий доступ до перевірених нейромереж, оптимізованих для вирішення специфічних бізнес-задач. AI.GO допоможе знайти ідеальне рішення за секунди.",
     imageSrc: img.hit01,
   },
   {
     number: 2,
     title: "Шукайте промпти для натхнення",
     description:
-      "Lorem ipsum dolor sin amet magna consecteur aliqua nici consecteur magna consequat laborem sin dolorem consequat laborem sin dolorem.",
+      "Знайдіть унікальні ідеї для запитів, які надихнуть вас на нові відкриття. Розкрийте потенціал штучного інтелекту разом з AI.GO.",
     imageSrc: img.hit02,
   },
   {
     number: 3,
     title: "Навчайтесь навичкам зі складання промптів",
     description:
-      "Lorem ipsum dolor sin amet magna consecteur aliqua nici consecteur magna consequat laborem sin dolorem consequat laborem sin dolorem.",
+      "Освойте ефективне складання запитів за допомогою інтерактивних уроків і практичних порад. AI.GO – ваш путівник у світі нейротехнологій.",
     imageSrc: img.hit03,
   },
 ];
 
+// Дані для карточок переваг
 const cardAdvantagesData = [
   {
     number: 1,
@@ -67,6 +69,7 @@ const cardAdvantagesData = [
   },
 ];
 
+// Дані для FAQ (Accordion)
 const Data: Item[] = [
   {
     question: "Які нейромережі підтримує сервіс?",
@@ -107,109 +110,121 @@ export default function Home() {
       <section className='main-container'>
         <Header />
         <main className='main'>
-          <section className='container hero-section'>
-            <div className='info'>
-              <h1 className='main-title'>
-                Опануйте мистецтво запитів для сучасних нейромереж
-              </h1>
-              <h3 className='description'>
-                Lorem ipsum dolor sin amet magna consecteur aliqua nici
-                consecteur magna consequat laborem sin dolorem consequat laborem
-                sin dolorem.
-              </h3>
-              <Button onClick={() => setModalVisible(true)}>
-                Почати зараз
-                <Image src={icons.open} alt='arrow' width={24} height={24} />
-              </Button>
-            </div>
-            <div className='img-box'>
-              <Image src={img.hero01} alt='hero' priority />
-            </div>
-          </section>
-
-          <section className='container about-us' id='about-us'>
-            <div className='info'>
-              <h2 className='title blue-500'>Про проєкт</h2>
-              <h3 className='description'>
-                Наша мета — відкриття нових можливостей ефективного промптінгу.
-                Знаходьте необхідні сервіси, ідеї для промптів та опановуйте
-                навичкам складання запитів разом із
-                <span className='blue-500'> AI.GO</span>
-              </h3>
-            </div>
-            <FloatingBox />
-          </section>
-
-          <section className='hit-section' id='how-it-works'>
-            <div className='container'>
-              <h2 className='title'>Як це працює</h2>
-              <div className='card-container'>
-                {cardHITData.map((card) => (
-                  <CardHIT
-                    key={card.number}
-                    number={card.number}
-                    title={card.title}
-                    description={card.description}
-                    imageSrc={card.imageSrc}
-                  />
-                ))}
-              </div>
-            </div>
-          </section>
-
-          <section className='advantages-section' id='advantages'>
-            <div className='container'>
-              <h2 className='title'>
-                Переваги платформи <span className='blue-500'>AI.GO</span>
-              </h2>
-              <div className='cards-container'>
-                {cardAdvantagesData.map((card) => (
-                  <CardAdvantages
-                    key={card.number}
-                    title={card.title}
-                    description={card.description}
-                    imageSrc={card.imageSrc}
-                  />
-                ))}
-              </div>
-            </div>
-          </section>
-
-          <section className='cta-section'>
-            <div className='container'>
+          <AnimatedBlock className='hero-section-wrapper'>
+            <section className='container hero-section'>
               <div className='info'>
-                <h2 className='title'>
-                  Знаходьте нові нейромережі та промпти в один клік!
-                </h2>
+                <h1 className='main-title'>
+                  Опануйте мистецтво запитів для сучасних нейромереж
+                </h1>
                 <h3 className='description'>
-                  Lorem ipsum dolor sin amet magna consecteur aliqua nici
-                  consecteur magna consequat laborem sin dolorem consequat
-                  laborem sin dolorem.
+                  Швидко знаходьте найефективніші AI-рішення для вашого бізнесу.
+                  Оптимізуйте запити, економте час та збільшуйте прибуток з
+                  AI.GO.
+                </h3>
+                <Button onClick={() => setModalVisible(true)}>
+                  Почати зараз
+                  <Image src={icons.open} alt='arrow' width={24} height={24} />
+                </Button>
+              </div>
+              <div className='img-box'>
+                <Image src={img.hero01} alt='hero' priority />
+              </div>
+            </section>
+          </AnimatedBlock>
+
+          <AnimatedBlock>
+            <section className='container about-us' id='about-us'>
+              <div className='info'>
+                <h2 className='title blue-500'>Про проєкт</h2>
+                <h3 className='description'>
+                  Наша мета — відкриття нових можливостей ефективного
+                  промптінгу. Знаходьте необхідні сервіси, ідеї для промптів та
+                  опановуйте навички складання запитів разом із{" "}
+                  <span className='blue-500'>AI.GO</span>
                 </h3>
               </div>
-              <Button
-                className='secondary'
-                onClick={() => setModalVisible(true)}
-              >
-                Підписатись на оновлення
-                <Image
-                  src={icons.openDark}
-                  alt='arrow'
-                  width={24}
-                  height={24}
-                />
-              </Button>
-            </div>
-          </section>
+              <FloatingBox />
+            </section>
+          </AnimatedBlock>
 
-          <section className='faq-section' id='faq'>
-            <div className='container'>
-              <div className='info'>
-                <h2 className='title'>Найчастіші запитання</h2>
+          <AnimatedBlock>
+            <section className='hit-section' id='how-it-works'>
+              <div className='container'>
+                <h2 className='title'>Як це працює</h2>
+                <div className='card-container'>
+                  {cardHITData.map((card) => (
+                    <CardHIT
+                      key={card.number}
+                      number={card.number}
+                      title={card.title}
+                      description={card.description}
+                      imageSrc={card.imageSrc}
+                    />
+                  ))}
+                </div>
               </div>
-              <Accordion items={Data} />
-            </div>
-          </section>
+            </section>
+          </AnimatedBlock>
+
+          <AnimatedBlock>
+            <section className='advantages-section' id='advantages'>
+              <div className='container'>
+                <h2 className='title'>
+                  Переваги платформи <span className='blue-500'>AI.GO</span>
+                </h2>
+                <div className='cards-container'>
+                  {cardAdvantagesData.map((card) => (
+                    <CardAdvantages
+                      key={card.number}
+                      title={card.title}
+                      description={card.description}
+                      imageSrc={card.imageSrc}
+                    />
+                  ))}
+                </div>
+              </div>
+            </section>
+          </AnimatedBlock>
+
+          <AnimatedBlock>
+            <section className='cta-section'>
+              <div className='container'>
+                <div className='info'>
+                  <h2 className='title'>
+                    Знаходьте нові нейромережі та промпти в один клік!
+                  </h2>
+                  <h3 className='description'>
+                    Дослідіть безмежні можливості штучного інтелекту – отримуйте
+                    актуальні нейромережі та найкращі промпти всього в один
+                    клік. AI.GO відкриває шлях до інновацій.
+                  </h3>
+                </div>
+                <Button
+                  className='secondary'
+                  onClick={() => setModalVisible(true)}
+                >
+                  Підписатись на оновлення
+                  <Image
+                    src={icons.openDark}
+                    alt='arrow'
+                    width={24}
+                    height={24}
+                  />
+                </Button>
+              </div>
+            </section>
+          </AnimatedBlock>
+
+          <AnimatedBlock>
+            <section className='faq-section' id='faq'>
+              <div className='container'>
+                <div className='info'>
+                  <h2 className='title'>Найчастіші запитання</h2>
+                </div>
+                <Accordion items={Data} />
+              </div>
+            </section>
+          </AnimatedBlock>
         </main>
       </section>
       <Footer />
